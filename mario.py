@@ -22,12 +22,13 @@ fps = pygame.time.Clock()
 gameEvents = pygame.event
 
 mario = pygame.image.load("assets/mario.png")
-fundo = pygame.image.load("assets/fundo teste.jpg")
+fundo = pygame.image.load("assets/fundoMario.jpg")
 pygame.display.set_caption("SUPER MARIO DOS GURI")
 
 jogando = True
-marioX = 400
-marioY = 400
+posicaoMarioX = 400
+posicaoMarioY = 255
+
 marioAltura = 93
 marioLargura = 93
 movimentoMarioX = 0
@@ -39,15 +40,17 @@ while True:
             quit()
         elif evento.type == pygame.KEYDOWN:
             if evento.key == pygame.K_LEFT:
-                movimentoMarioX = -15
+                movimentoMarioX = -5
             elif evento.key == pygame.K_RIGHT:
-                movimentoMarioX = 15
-            elif evento.type == pygame.KEYUP:
-                movimentoMarioX = 0
-        display.fill(branco)
-        posicao = (movimentoMarioX, 100)
-        display.blit(fundo, (0, 0))
-        display.blit(mario, posicao)
+                movimentoMarioX = 5
+        elif evento.type == pygame.KEYUP:
+            movimentoMarioX = 0
 
-        pygame.display.update()
-        fps.tick(144)
+    posicaoMarioX = posicaoMarioX + movimentoMarioX         
+    display.fill(branco)
+    posicao = (posicaoMarioX, posicaoMarioY)
+    display.blit(fundo, (0, 0))
+    display.blit(mario, posicao)
+
+    pygame.display.update()
+    fps.tick(144)
