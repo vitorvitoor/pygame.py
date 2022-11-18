@@ -30,7 +30,7 @@ posicaoMarioX = 400
 posicaoMarioY = 255
 
 marioAltura = 93
-marioLargura = 93
+marioLargura = 50
 movimentoMarioX = 0
 
 while True:
@@ -45,8 +45,11 @@ while True:
                 movimentoMarioX = 5
         elif evento.type == pygame.KEYUP:
             movimentoMarioX = 0
+    if posicaoMarioX + movimentoMarioX < 520 and posicaoMarioX + movimentoMarioX > -30:
+        posicaoMarioX = posicaoMarioX + movimentoMarioX 
 
-    posicaoMarioX = posicaoMarioX + movimentoMarioX         
+
+            
     display.fill(branco)
     posicao = (posicaoMarioX, posicaoMarioY)
     display.blit(fundo, (0, 0))
